@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{key}}</title>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            color: #242424;
+        }
+        #signature {
+            position:absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Open Sans Condensed', sans-serif;
+            gap: 10px;
+            pointer-events: none;
+        }
+        #signature .name {
+            font-size: 18pt;
+            font-weight: 500;
+        }
+        #signature .group {
+            font-size: 12pt;
+            opacity: 0.6;
+            margin-top: 4px;
+        }
+        .radial-gradient {
+            position:fixed;
+            top:0px;
+            left:0px;
+            height:100%;
+            width:100%;
+            
+            /*Fallback if gradeints don't work */
+            background: #ECD6CC;
+            /*Linear gradient... */
+            background: 
+                radial-gradient(
+                at center, #D8D8EE, #ECD6CC
+                );
+        }
+        .word {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Amatic SC', cursive;
+            font-size: 28pt;
+            text-align: center;
+            pointer-events: none;
+        }
+        .word span {
+            font-size: 36pt;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="radial-gradient"></div>
+
+    <div class="word">
+        <span>{{key}}</span> {{value}}
+    </div>
+
+    <div id="signature">
+        <div class="name">Зернов Виктор</div>
+        <div class="group">P42071</div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).mousemove(function(event) {
+            windowWidth = $(window).width();
+            windowHeight = $(window).height();
+            
+            mouseXpercentage = Math.round(event.pageX / windowWidth * 100);
+            mouseYpercentage = Math.round(event.pageY / windowHeight * 100);
+            
+            $('.radial-gradient').css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #D8D8EE, #ECD6CC)');
+        });
+    </script>
+</body>
+<html>
