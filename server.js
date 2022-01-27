@@ -1,7 +1,7 @@
 const express = require('express')
 const fs = require('fs')
 const app = express()
-const port = 3000
+const port = 8080
 
 const DICTIONARY = JSON.parse(fs.readFileSync('dictionary.json', 'utf8'))
 const DICTIONARY_GROUPED = group_by_letter(DICTIONARY);
